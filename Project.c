@@ -93,7 +93,46 @@ void get_lat_long(double *latitude, double *longitude) {
           }
         }
       }*/
-			
+		
+/*char *token;
+      uint8_t token_count;
+			uint8_t sentence_index;
+			char sentence[80];
+			char c;
+			bool flag;
+void get_lat_long(double *latitude, double *longitude) {
+		
+			flag=true;
+			c= UART2_in();
+			sentence_index = 0;
+    if (c == '$') {
+        sentence_index = 0;
+    }
+    while (flag) {
+        sentence[sentence_index++] = c;
+			c= UART2_in();
+        if (c == '*') {
+            sentence[sentence_index] = '\0';
+						flag=false;
+						
+            if (strstr(sentence, "$GPRMC")) {
+								token_count = 0;
+                token = strtok(sentence, ",");
+                while (token != NULL) {
+                    token_count++;
+                    //if (token_count == 3)        {if (strstr(token, "V")) break;}
+                     if (token_count == 4)  {*latitude = atof(token);}
+                    //else if (token_count == 5)  {if (strstr(token, "S")) *latitude=-*latitude;}
+                    else if (token_count == 6)  {*longitude = atof(token);}
+                    //else if (token_count == 7)  {if (strstr(token, "W")) *longitude=-*longitude;}
+                    token = strtok(NULL, ",");
+                }
+            }
+          }
+        }
+      }*/
+
+
 			
 			char lat_substring[12];
        char long_substring[12];
@@ -109,7 +148,15 @@ flag = true;
     if (c == '$') {
         sentence_index = 0;
 
-   
+   while (flag) {
+			        sentence[sentence_index++] = c;
+			     c=UART2_in();
+
+
+        if (c == '*') {
+            sentence[sentence_index] = '\0';
+flag = false;
+		
             if (strstr(sentence, "$GPRMC")) {
 
 
