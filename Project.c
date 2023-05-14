@@ -34,8 +34,8 @@ void UART2_initialization(){
   SYSCTL_RCGCGPIO_R|=0x08;                //enable gpio clk
   while((SYSCTL_PRGPIO_R & 0x08)==0);     //wait 
   UART2_CTL_R&=~0x0001;                    //disable UART2 at beginning
-  UART2_IBRD_R=104;
-  UART2_FBRD_R=11;
+  UART2_IBRD_R=104;                      //BRD=16*10^6/(16*9600)=104.1667>>IBRD=104
+  UART2_FBRD_R=11;                        //FBRD=.1667*64+0.5=11
   UART2_LCRH_R=0x0070;
   UART2_CTL_R=0x0301;
   GPIO_PORTD_LOCK_R=0x4C4F434B;
@@ -43,7 +43,7 @@ void UART2_initialization(){
   GPIO_PORTD_AFSEL_R|=0xC0;
   GPIO_PORTD_PCTL_R=0x11000000;
   GPIO_PORTD_DEN_R|=0xC0;
-	GPIO_PORTD_DIR_R&=~0x40;
+	GPIO_PORTD_DIR_R&=~0x40; 
 	GPIO_PORTD_DIR_R|=0x80;
   GPIO_PORTD_AMSEL_R&=~0xC0;
 }
