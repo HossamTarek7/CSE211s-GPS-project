@@ -109,14 +109,7 @@ flag = true;
     if (c == '$') {
         sentence_index = 0;
 
-    while (flag) {
-			        sentence[sentence_index++] = c;
-			     c=UART2_in();
-
-
-        if (c == '*') {
-            sentence[sentence_index] = '\0';
-flag = false;
+   
             if (strstr(sentence, "$GPRMC")) {
 
 
