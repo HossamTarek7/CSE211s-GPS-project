@@ -204,9 +204,9 @@ int main(){
 		longitudeadj = (int)(longitude1 / 100) + (longitude1 - (int)(longitude1 / 100) * 100) / 60.0;		// DegMinSec to Decimal degrees (longitude)
 		distance=GPS_getdistance(latitudeadj,longitudeadj,latitude2,longitude2); 
 		
-		 if(5<=distance){ led_output(Red); } 
-    else if(2<distance && distance<5) {led_output(Yellow);}
-		else if(0<=distance && distance<2) {led_output(Green);}
+		 if(distance>=5){ led_output(Red); }   
+    else if(distance>2 && distance<5) {led_output(Yellow);}
+		else if(distance>=0 && distance<2) {led_output(Green);}
   }
 }
 
