@@ -192,3 +192,22 @@ double latitude2=30.0633040 ;
 double longitude2=31.2791293;
 double distance;
 
+int main(){
+	
+  led_initializaiton();
+  UART2_initialization();
+	
+  while(1){
+
+    get_lat_long(&latitude1,&longitude1);
+		latitudeadj = (int)(latitude1 / 100) + (latitude1 - (int)(latitude1 / 100) * 100) / 60.0;		// DegMinSec to Decimal degrees (latitude)
+		longitudeadj = (int)(longitude1 / 100) + (longitude1 - (int)(longitude1 / 100) * 100) / 60.0;		// DegMinSec to Decimal degrees (longitude)
+		distance=GPS_getdistance(latitudeadj,longitudeadj,latitude2,longitude2); 
+		
+		 if(5<=distance){ led_output(Red); } 
+    else if(2<distance && distance<5) {led_output(Yellow);}
+		else if(0<=distance && distance<2) {led_output(Green);}
+  }
+}
+
+
