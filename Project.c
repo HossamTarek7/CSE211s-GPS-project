@@ -17,9 +17,9 @@ void led_initializaiton(){
   while((SYSCTL_PRGPIO_R & 0x20)==0);
   GPIO_PORTF_LOCK_R=0x4C4F434B;
   GPIO_PORTF_CR_R|=0x0E;
-  GPIO_PORTF_AFSEL_R&=~0x0E;
-  GPIO_PORTF_AMSEL_R&=~0x0E;
-  GPIO_PORTF_DEN_R|=0x0E;
+  GPIO_PORTF_AFSEL_R&=~0x0E; //disable alternate function for pin1,pin2,pin3
+  GPIO_PORTF_AMSEL_R&=~0x0E; //disable analog for pin1,pin2,pin3
+  GPIO_PORTF_DEN_R|=0x0E; //configure pin1,pin2,pin3 as digital
   GPIO_PORTF_PCTL_R&=~0x0000FFF0;
   GPIO_PORTF_DIR_R|=0x0E;
   GPIO_PORTF_DATA_R &=~0x0E;
