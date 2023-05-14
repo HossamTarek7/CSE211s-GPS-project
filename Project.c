@@ -45,8 +45,8 @@ void UART2_initialization(){
   GPIO_PORTD_AFSEL_R|=0xC0;
   GPIO_PORTD_PCTL_R=0x11000000;
   GPIO_PORTD_DEN_R|=0xC0;
-	GPIO_PORTD_DIR_R&=~0x40;
-	GPIO_PORTD_DIR_R|=0x80;
+	GPIO_PORTD_DIR_R&=~0x40;         //pin 2 is input
+	GPIO_PORTD_DIR_R|=0x80;         //pin 3 is output
   GPIO_PORTD_AMSEL_R&=~0xC0;
 }
 
