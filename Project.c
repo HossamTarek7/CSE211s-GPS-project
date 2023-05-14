@@ -160,8 +160,8 @@ int main(){
   while(1){
 
     get_lat_long(&latitude1,&longitude1);
-		latitudeadj = (int)(latitude1 / 100) + (latitude1 - (int)(latitude1 / 100) * 100) / 60.0;
-		longitudeadj = (int)(longitude1 / 100) + (longitude1 - (int)(longitude1 / 100) * 100) / 60.0;
+		latitudeadj = (int)(latitude1 / 100) + (latitude1 - (int)(latitude1 / 100) * 100) / 60.0;		// DegMinSec to Decimal degrees (latitude)
+		longitudeadj = (int)(longitude1 / 100) + (longitude1 - (int)(longitude1 / 100) * 100) / 60.0;		// DegMinSec to Decimal degrees (longitude)
 		distance=GPS_getdistance(latitudeadj,longitudeadj,latitude2,longitude2); 
 		
 		 if(5<=distance){ led_output(Red); } 
