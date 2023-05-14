@@ -10,8 +10,6 @@
 #include <stdbool.h>
 #define uint8_t        unsigned char
 
-
-
 void led_initializaiton(){
   SYSCTL_RCGCGPIO_R|=0x20;
   while((SYSCTL_PRGPIO_R & 0x20)==0);
