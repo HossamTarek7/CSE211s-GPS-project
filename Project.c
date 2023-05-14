@@ -170,7 +170,7 @@ flag = false;
             }
           }
         }
-		}
+       }
       }
 			
 			
@@ -205,9 +205,9 @@ int main(){
 		distance=GPS_getdistance(latitudeadj,longitudeadj,latitude2,longitude2); 
 		
 		 if(5<=distance){ led_output(Red); } 
-    else if(2<distance && distance<5) {led_output(Yellow);}
-		else if(0<=distance && distance<2) {led_output(Green);}
-  }
+    else if(2<distance && distance<5) { led_output(Yellow); }
+		else if(0<=distance && distance<2) { led_output(Green); }
+          }
 }
 
 
